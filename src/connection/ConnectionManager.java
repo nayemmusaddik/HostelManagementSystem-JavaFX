@@ -469,13 +469,13 @@ public class ConnectionManager {
 
     public void updateStudent(Student student) throws SQLException{
         PreparedStatement preparedStatement = null;
-        String query = "update student set fullName=?, phone=? where sId = ?";
+        String query = "update student set fullName=?, phone=? where regNo = ?";
 
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, student.getFullName());
             preparedStatement.setString(2, student.getPhone());
-            preparedStatement.setInt(3, student.getsId());
+            preparedStatement.setString(3, student.getRegNo());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

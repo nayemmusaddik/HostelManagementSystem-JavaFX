@@ -167,7 +167,7 @@ public class AllStudents implements Initializable {
                 studentTable.getSelectionModel()
                         .getSelectedItem();
         try {
-            System.out.println(student.getsId());
+            System.out.println(student.getRegNo());
             manager.updateStudent(student);
         } catch (SQLException e) {
             e.printStackTrace();
