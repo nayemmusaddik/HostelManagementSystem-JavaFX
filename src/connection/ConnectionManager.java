@@ -20,50 +20,28 @@ public class ConnectionManager {
         connection = DBHandler.connect();
     }
 
-    public  boolean doLogin(String userName, String password, String userType) throws SQLException {
-        PreparedStatement preparedStatement=null;
-        ResultSet resultSet=null;
-        String query="select * from user where userName= ? and password= ? and userType= ? ";
-        try {
-            preparedStatement= connection.prepareStatement(query);
-            preparedStatement.setString(1,userName);
-            preparedStatement.setString(2,password);
-            preparedStatement.setString(3,userType);
-            resultSet=preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            preparedStatement.close();
-            resultSet.close();
-        }
-        return false;
-    }
-
+    //##############################    CREATE     ##################################################
     public void registerStudent(Student student) throws SQLException {
-        registerUser(student);
-        PreparedStatement preparedStatement=null;
-        String query="insert into student (fullName,phone,regNo,department,status,address) values (?,?,?,?,?,?) ";
-        try {
-            preparedStatement= connection.prepareStatement(query);
-            preparedStatement.setString(1,student.getFullName());
-            preparedStatement.setString(2,student.getPhone());
-            preparedStatement.setString(3,student.getRegNo());
-            preparedStatement.setString(4,student.getDepartment());
-            preparedStatement.setString(5,"Due");
-            preparedStatement.setString(6,student.getAddress());
-            preparedStatement.executeUpdate();
+    registerUser(student);
+    PreparedStatement preparedStatement=null;
+    String query="insert into student (fullName,phone,regNo,department,status,address) values (?,?,?,?,?,?) ";
+    try {
+        preparedStatement= connection.prepareStatement(query);
+        preparedStatement.setString(1,student.getFullName());
+        preparedStatement.setString(2,student.getPhone());
+        preparedStatement.setString(3,student.getRegNo());
+        preparedStatement.setString(4,student.getDepartment());
+        preparedStatement.setString(5,"Due");
+        preparedStatement.setString(6,student.getAddress());
+        preparedStatement.executeUpdate();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            preparedStatement.close();
-        }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    finally {
+        preparedStatement.close();
+    }
+}
 
     public void registerEmployee(Employee employee) throws SQLException {
         registerUser(employee);
@@ -82,7 +60,7 @@ public class ConnectionManager {
         }
     }
 
-    public User registerUser(User user) throws SQLException {
+    private void registerUser(User user) throws SQLException {
         PreparedStatement preparedStatement=null;
         String insertQuery="insert into user (userType, userName, password) values (?,?,?)";
         try {
@@ -90,25 +68,6 @@ public class ConnectionManager {
             preparedStatement.setString(1,user.getUserType());
             preparedStatement.setString(2,user.getUserName());
             preparedStatement.setString(3,user.getPassword());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            preparedStatement.close();
-        }
-        return user;
-    }
-
-    public void allocateSeat(Seat seat) throws SQLException {
-        PreparedStatement preparedStatement=null;
-        ResultSet resultSet = null;
-        String query="update seat set regNo=? where roomNo=? and seatNo = ?";
-        try {
-            preparedStatement= connection.prepareStatement(query);
-            preparedStatement.setString(1,seat.getRegNo());
-            preparedStatement.setString(2,seat.getRoomNo());
-            preparedStatement.setString(3,seat.getSeatNo());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -137,6 +96,30 @@ public class ConnectionManager {
             preparedStatement.close();
         }
     }
+
+    //##############################    READ     ##################################################
+    public  boolean doLogin(String userName, String password, String userType) throws SQLException {
+    PreparedStatement preparedStatement=null;
+    ResultSet resultSet=null;
+    String query="select * from user where userName= ? and password= ? and userType= ? ";
+    try {
+        preparedStatement= connection.prepareStatement(query);
+        preparedStatement.setString(1,userName);
+        preparedStatement.setString(2,password);
+        preparedStatement.setString(3,userType);
+        resultSet=preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return true;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    finally {
+        preparedStatement.close();
+        resultSet.close();
+    }
+    return false;
+}
 
     public Employee getEmployeeByUsername(String userName) throws SQLException {
         PreparedStatement preparedStatement = null;
@@ -417,47 +400,21 @@ public class ConnectionManager {
         return count;
     }
 
-    public void deleteStudent(String regNo) throws SQLException {
-        PreparedStatement preparedStatement = null;
-        String query = "delete from student where regNo = ?";
+    //##############################    UPDATE     ##################################################
+    public void allocateSeat(Seat seat) throws SQLException {
+        PreparedStatement preparedStatement=null;
+        ResultSet resultSet = null;
+        String query="update seat set regNo=? where roomNo=? and seatNo = ?";
         try {
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, regNo);
+            preparedStatement= connection.prepareStatement(query);
+            preparedStatement.setString(1,seat.getRegNo());
+            preparedStatement.setString(2,seat.getRoomNo());
+            preparedStatement.setString(3,seat.getSeatNo());
             preparedStatement.executeUpdate();
-            unAllocateSeat(regNo);
-            deleteUser(regNo);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            preparedStatement.close();
         }
-    }
-
-    public void deleteEmployee(String phone) throws SQLException {
-        PreparedStatement preparedStatement = null;
-        String query = "delete from employee where phone = ?";
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, phone);
-            preparedStatement.executeUpdate();
-            deleteUser(phone);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            preparedStatement.close();
-        }
-    }
-
-    public void deleteUser(String userName) throws SQLException {
-        PreparedStatement preparedStatement = null;
-        String query = "delete from user where userName = ?";
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, userName);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
+        finally {
             preparedStatement.close();
         }
     }
@@ -520,5 +477,53 @@ public class ConnectionManager {
             preparedStatement.close();
         }
     }
+
+    //##############################    DELETE     ##################################################
+    public void deleteStudent(String regNo) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String query = "delete from student where regNo = ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, regNo);
+            preparedStatement.executeUpdate();
+            unAllocateSeat(regNo);
+            deleteUser(regNo);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            preparedStatement.close();
+        }
+    }
+
+    public void deleteEmployee(String phone) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String query = "delete from employee where phone = ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, phone);
+            preparedStatement.executeUpdate();
+            deleteUser(phone);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            preparedStatement.close();
+        }
+    }
+
+    private void deleteUser(String userName) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String query = "delete from user where userName = ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, userName);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            preparedStatement.close();
+        }
+    }
+
+
 
 }
