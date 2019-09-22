@@ -25,12 +25,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AllEmployees implements Initializable {
+
     private ConnectionManager manager;
-
     public AnchorPane paneMain;
-
     private AnchorPane paneRegisterEmployee;
-
 
     @FXML
     TableView<Employee> employeeTable;
@@ -47,7 +45,6 @@ public class AllEmployees implements Initializable {
         //Load all fxmls in a cache
         try {
             paneRegisterEmployee = FXMLLoader.load(getClass().getResource("/dashboard/registerEmployee/RegisterEmployee.fxml"));
-
         } catch (IOException ex) {
             Logger.getLogger(AllStudents.class.getName()).log(Level.SEVERE, null, ex);
         }
