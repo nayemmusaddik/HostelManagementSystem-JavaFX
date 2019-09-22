@@ -20,7 +20,9 @@ public class ConnectionManager {
         connection = DBHandler.connect();
     }
 
-    //##############################    CREATE     ##################################################
+/*
+    ##############################    CREATE     ##################################################
+*/
     public void registerStudent(Student student) throws SQLException {
     registerUser(student);
     PreparedStatement preparedStatement=null;
@@ -97,7 +99,9 @@ public class ConnectionManager {
         }
     }
 
-    //##############################    READ     ##################################################
+/*
+    ##############################    READ     ##################################################
+*/
     public  boolean doLogin(String userName, String password, String userType) throws SQLException {
     PreparedStatement preparedStatement=null;
     ResultSet resultSet=null;
@@ -400,7 +404,9 @@ public class ConnectionManager {
         return count;
     }
 
-    //##############################    UPDATE     ##################################################
+/*
+    ##############################    UPDATE     ##################################################
+*/
     public void allocateSeat(Seat seat) throws SQLException {
         PreparedStatement preparedStatement=null;
         ResultSet resultSet = null;
@@ -478,7 +484,9 @@ public class ConnectionManager {
         }
     }
 
-    //##############################    DELETE     ##################################################
+/*
+    ##############################    DELETE     ##################################################
+*/
     public void deleteStudent(String regNo) throws SQLException {
         PreparedStatement preparedStatement = null;
         String query = "delete from student where regNo = ?";
