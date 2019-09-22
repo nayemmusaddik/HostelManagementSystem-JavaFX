@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="455.0" maxWidth="605.0" minHeight="455.0" minWidth="605.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.overview.Overview">
+   <children>
+      <Label fx:id="lblAvailableSeat" alignment="CENTER" layoutX="43.0" layoutY="83.0" prefHeight="265.0" prefWidth="238.0" style="-fx-background-color: #300663;" text="Label" textAlignment="CENTER" textFill="#fcf9f9" wrapText="true">
+         <font>
+            <Font name="Laksaman Bold" size="47.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotalStudent" alignment="CENTER" layoutX="319.0" layoutY="83.0" prefHeight="265.0" prefWidth="238.0" style="-fx-background-color: #300663;" text="Label" textAlignment="CENTER" textFill="#fcf9f9" wrapText="true">
+         <font>
+            <Font name="Laksaman Bold" size="47.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="83.0" layoutY="241.0" prefHeight="34.0" prefWidth="153.0" text="Available Seats" textAlignment="CENTER" textFill="#fffefe" wrapText="true">
+         <font>
+            <Font name="Laksaman Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="362.0" layoutY="242.0" prefHeight="34.0" prefWidth="153.0" text="Total Students" textAlignment="CENTER" textFill="#fffefe" wrapText="true">
+         <font>
+            <Font name="Laksaman Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

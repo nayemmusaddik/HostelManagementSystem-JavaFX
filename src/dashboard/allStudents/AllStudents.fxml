@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="464.0" maxWidth="612.0" minHeight="464.0" minWidth="612.0" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.allStudents.AllStudents">
+   <children>
+      <JFXButton layoutX="526.0" layoutY="45.0" onAction="#update" text="Update" textFill="#300663" />
+      <Label layoutX="23.0" layoutY="19.0" text="All Students" textAlignment="CENTER" textFill="#300663" underline="true">
+         <font>
+            <Font name="Laksaman Bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="studentTable" editable="true" layoutX="17.0" layoutY="73.0" prefHeight="357.0" prefWidth="574.0">
+         <columns>
+            <TableColumn fx:id="col_sId" minWidth="0.0" prefWidth="0.0" text="ID" />
+            <TableColumn fx:id="col_fullName" prefWidth="131.0" text="Name" />
+            <TableColumn fx:id="col_phone" prefWidth="127.0" text="Phone" />
+            <TableColumn fx:id="col_regNo" prefWidth="69.0" text="Reg. No" />
+            <TableColumn fx:id="col_department" prefWidth="50.0" text="Dept." />
+            <TableColumn fx:id="col_floorNo" prefWidth="45.0" text="Floor" />
+            <TableColumn fx:id="col_roomNo" minWidth="0.0" prefWidth="51.0" text="Room" />
+            <TableColumn fx:id="col_seatNo" minWidth="1.0" prefWidth="43.0" text="Seat" />
+            <TableColumn fx:id="col_status" prefWidth="57.0" text="Status" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <JFXButton layoutX="449.0" layoutY="45.0" onAction="#delete" text="Delete" textFill="#300663" />
+      <JFXButton layoutX="340.0" layoutY="44.0" onAction="#unAllocateSeat" text="Unallocate" textFill="#300663" />
+      <ImageView fitHeight="26.0" fitWidth="18.0" layoutX="326.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/image/disallocate.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="432.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/image/delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="513.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/image/refresh.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="232.0" layoutY="44.0" onAction="#addNew" text="Add New" textFill="#300663" />
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="216.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/image/register.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

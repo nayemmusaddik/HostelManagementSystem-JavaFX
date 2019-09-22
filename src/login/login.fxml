@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
+   <children>
+      <JFXTextField fx:id="userName" layoutX="234.0" layoutY="215.0" prefHeight="26.0" prefWidth="233.0" promptText="Username or Reg. No" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="233.0" />
+      <Label alignment="CENTER" layoutX="274.0" layoutY="138.0" prefHeight="20.0" prefWidth="155.0" text="Login" textFill="#300663" AnchorPane.leftAnchor="274.0" AnchorPane.rightAnchor="271.0" AnchorPane.topAnchor="138.0">
+         <font>
+            <Font name="Laksaman Bold" size="24.0" />
+         </font>
+      </Label>
+      <JFXPasswordField fx:id="password" layoutX="234.0" layoutY="275.0" prefHeight="26.0" prefWidth="233.0" promptText="Password" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="233.0" />
+      <JFXButton alignment="CENTER" layoutX="234.0" layoutY="383.0" onAction="#login" prefHeight="31.0" prefWidth="233.0" style="-fx-background-color: #300663;" text="Login" textFill="#f8f7f7" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="233.0" />
+      <JFXComboBox fx:id="userType" layoutX="233.0" layoutY="326.0" prefHeight="26.0" prefWidth="233.0" promptText="Select Usre Type" />
+      <Label fx:id="loginMsg" alignment="CENTER" layoutX="8.0" layoutY="461.0" prefHeight="31.0" prefWidth="692.0" textAlignment="CENTER" textFill="#eb0a0a" wrapText="true" />
+      <Label alignment="CENTER_RIGHT" layoutX="75.0" layoutY="15.0" prefHeight="104.0" prefWidth="563.0" text="Hostel Management System  " textAlignment="JUSTIFY" textFill="#300663" wrapText="true">
+         <font>
+            <Font name="Laksaman Bold" size="29.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="87.0" fitWidth="87.0" layoutX="128.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/iit.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
