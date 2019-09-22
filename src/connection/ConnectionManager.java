@@ -172,16 +172,15 @@ public class ConnectionManager {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 student.setsId(resultSet.getInt(1));
-                student.setuId(resultSet.getInt(2));
-                student.setFullName(resultSet.getString(3));
-                student.setPhone(resultSet.getString(4));
-                student.setRegNo(resultSet.getString(5));
-                student.setDepartment(resultSet.getString(6));
-                student.setStatus(resultSet.getString(7));
-                student.setAddress(resultSet.getString(8));
-                student.setRoomNo(getSeatByReg(resultSet.getString(5)).getRoomNo());
-                student.setSeatNo(getSeatByReg(resultSet.getString(5)).getSeatNo());
-                student.setFloorNo(getSeatByReg(resultSet.getString(5)).getFloorNo());
+                student.setFullName(resultSet.getString(2));
+                student.setPhone(resultSet.getString(3));
+                student.setRegNo(resultSet.getString(4));
+                student.setDepartment(resultSet.getString(5));
+                student.setStatus(resultSet.getString(6));
+                student.setAddress(resultSet.getString(7));
+                student.setRoomNo(getSeatByReg(resultSet.getString(4)).getRoomNo());
+                student.setSeatNo(getSeatByReg(resultSet.getString(4)).getSeatNo());
+                student.setFloorNo(getSeatByReg(resultSet.getString(4)).getFloorNo());
             }
 
         } catch (SQLException e) {

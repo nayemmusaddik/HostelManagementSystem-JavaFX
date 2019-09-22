@@ -71,7 +71,7 @@ public class RegisterEmployee implements Initializable {
             regStatus.setStyle("-fx-text-fill: red;");
             return false;
         } else if (manager.getEmployeeByUsername(phone.getText()).getPhone() != null){
-            regStatus.setText("Student Already Exists!");
+            regStatus.setText("Employee Already Exists!");
             regStatus.setStyle("-fx-text-fill: red;");
             return false;
         }
